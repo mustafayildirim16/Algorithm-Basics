@@ -1,0 +1,20 @@
+#This code is obtained from MIT 11.Understanding Program Efficiency
+#https://www.youtube.com/watch?v=7lQXYl_L28w
+
+def genSubsets(L):
+    res =[]
+    if len(L) == 0:
+        return[[]] #list of emty list
+    
+    smaller = genSubsets(L[:-1]) # all subsets without last element
+    extra =L[-1:]# generate a list of just last element
+    new =[]
+    for small in smaller:
+        #for all smaller solutions,add one with last element
+        new.append(small+extra)
+    #combine those with last element and those without
+    return smaller+new
+    
+#Example
+L=[1,2,3,4]
+genSubsets(L)
